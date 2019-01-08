@@ -52,7 +52,7 @@
         <div class="modal-body">
           <div id="itemContainer"></div>
 
-            <table class="table" id="table-person">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Firstname</th>
@@ -61,7 +61,7 @@
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="tbody-data">
                 <template id="MasterTemplate">
                   <tr>
                     <td>{{firstname}}</td>
@@ -104,7 +104,7 @@
       let MasterTemplate = $(`#MasterTemplate`).html();
 
       $(`button[name="clearData"]`).on('click', () => {
-         RenderTemplate('#table-person > tbody', []);
+         RenderTemplate('tbody-data', []);
       });
 
       $(`button[name="fetchData"]`).on('click', () => {
@@ -113,7 +113,7 @@
           {firstname: 'Manop',lastname: 'Bunmi', email: 'manop@gmail.com'},
           {firstname: 'Somsi',lastname: 'Gaidee', email: 'somsi@gmail.com'},
         ];
-         RenderTemplate('#table-person > tbody', data);
+         RenderTemplate('tbody-data', data);
       });
 
       /* RenderTemplate() method map the variable with array object, and returns the html.
@@ -124,7 +124,7 @@
            |       | 
            |       --------- Data array
            | 
-           ------------- Element id
+           ------------- Element id for render
       */
       const RenderTemplate = (elementId = null , data = []) => {
            let content = [];
@@ -138,11 +138,11 @@
              })
              content.push(item)
            });
-          $(`${elementId}`).html(content);
+          document.getElementById(`${elementId}`).innerHTML = content.join(''); 
       }
 
       //Initial
-      RenderTemplate(`#table-person > tbody`, data);
+      RenderTemplate(`tbody-data`, data);
 
     });
 

@@ -19,18 +19,18 @@
 ## javascript function
 ```
   const RenderTemplate = (elementId = null , data = []) => {
-      let content = [];
-      let keys = data.length > 0 && Object.keys(data[0])
-      data.forEach( ( element ) => {
-        let item = MasterTemplate;
-        keys.forEach(o => {
-          let replace = `{{`+o+`}}`;
-          let re = new RegExp(replace,`gi`);
-          item = item.replace(re, element[o])
-        })
-        content.push(item)
-      });
-    $(`${elementId}`).html(content);
+    let content = [];
+    let keys = data.length > 0 && Object.keys(data[0])
+    data.forEach( ( element ) => {
+      let item = MasterTemplate;
+      keys.forEach(o => {
+        let replace = `{{`+o+`}}`;
+        let re = new RegExp(replace,`gi`);
+        item = item.replace(re, element[o])
+      })
+      content.push(item)
+    });
+    document.getElementById(`${elementId}`).innerHTML = content.join(''); 
   }
 ```
 ##
