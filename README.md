@@ -1,5 +1,5 @@
 # Template Engine Demo
-use when render value in template tag
+use when you have HTML code you want to use over and over again, render value in template tag
 
 ## mockup data
 ```
