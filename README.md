@@ -1,3 +1,11 @@
+## mockup data
+```
+ let data = [
+    {firstname: 'Siriphon',lastname: 'Panayathipo', email: 'siriphon@gmail.com'},
+    {firstname: 'Manop',lastname: 'Bunmi', email: 'manop@gmail.com'},
+    {firstname: 'Somsi',lastname: 'Gaidee', email: 'somsi@gmail.com'},
+  ];
+```
 ## template tag
 ```
   <template id="MasterTemplate">
@@ -33,4 +41,3 @@
     document.getElementById(`${elementId}`).innerHTML = content.join(''); 
   }
 ```
-##
