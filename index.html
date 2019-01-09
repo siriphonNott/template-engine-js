@@ -106,7 +106,7 @@
       let pattern = new Set(contentTemplate.match(regexp));
 
       $(`button[name="clearData"]`).on('click', () => {
-        RenderTemplate('tbody-data', []);
+        RenderTemplate(contentTemplate, 'tbody-data', []);
       });
 
       $(`button[name="fetchData"]`).on('click', () => {

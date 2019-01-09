@@ -1,6 +1,13 @@
 # Template Engine Demo
 use when you have HTML code you want to use over and over again, render value in template tag
 
+## Step by step
+  > add template.
+  > add render method.
+  > data for display in template,which must be array of object.
+  > variable keep the content of the element template.
+  > call render method with need parameter.
+
 ## Template tag
 ```
   <template id="MasterTemplate">
@@ -20,7 +27,7 @@ use when you have HTML code you want to use over and over again, render value in
   </template>
 ```
 ## Data Structure 
-data must be array
+**data must be array of object
 ```
  let data = [
     {firstname: 'Siriphon',lastname: 'Panayathipo', email: 'siriphon@gmail.com'},
@@ -33,7 +40,7 @@ data must be array
 let contentTemplate = $(`#masterTemplate`).html();  //use jQuery Method
 //or document.getElementById('masterTemplate').innerHTML //use HTML DOM Method
 ```
-## RenderTemplate function
+## Render Method 
 ```
   const RenderTemplate = (contentTemplate = null, elementId = null, data = null) => {
     
@@ -55,7 +62,7 @@ let contentTemplate = $(`#masterTemplate`).html();  //use jQuery Method
     document.getElementById(`${elementId}`).innerHTML = content.join('');
   }
 ```
-## call RenderTemplate function 
+## Calling render method 
 ```
  RenderTemplate(contentTemplate, `tbody-data`, data);
 ```
