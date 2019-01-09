@@ -1,12 +1,12 @@
 # Template Engine Demo
 use when you have HTML code you want to use over and over again, render value in template tag
 
-## Step by step
-  > add template.
-  > add render method.
-  > data for display in template,which must be array of object.
-  > variable keep the content of the element template.
-  > call render method with need parameter.
+## Using by Step by step
+  * add template.
+  * add render method.
+  * data for display in template,which must be array of object.
+  * variable keep the content of the element template.
+  * call render method with need parameter.
 
 ## Template tag
 ```
