@@ -1,56 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Template Engine js</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
-    <style>
-       @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+<head>
+  <title>Template Engine js</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
        html,h1,h2,h3,h4,h5,h6,p,a,button,tr,th,td {
          font-family: 'Montserrat', sans-serif!important;
-       }
+      }
    </style>
-  </head>
-  <body>
+</head>
+
+<body>
   <div class="container">
-  <h2 class="text-center">
-    Template Engine By NottDev
-    <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
-    <span class="sr-only">Loading...</span>
-  </h2>
-  <hr/>
-  <!-- Trigger the modal with a button -->
-  <div class="row text-center">
-    <div class="col-md-12">
-      <div class="form-group">
-        <button type="button" class="btn btn-info btn-lg margin-md"  data-toggle="modal" data-target="#myModal">
-          <i class="fa fa-external-link" aria-hidden="true"></i> Open Modal
-        </button>
-        <button name="fetchData" class="btn btn-success btn-lg margin-md ">
-          <i class="fa fa-download" aria-hidden="true"></i> Fetch Data
-        </button>
-        <button name="clearData" class="btn btn-warning btn-lg margin-md ">
-          <i class="fa fa-refresh" aria-hidden="true"></i> Clear Data
-        </button>
+    <h2 class="text-center">
+      Template Engine By NottDev
+      <i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </h2>
+    <hr />
+    <!-- Trigger the modal with a button -->
+    <div class="row text-center">
+      <div class="col-md-12">
+        <div class="form-group">
+          <button type="button" class="btn btn-info btn-lg margin-md" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-external-link" aria-hidden="true"></i> Open Modal
+          </button>
+          <button name="fetchData" class="btn btn-success btn-lg margin-md ">
+            <i class="fa fa-download" aria-hidden="true"></i> Fetch Data
+          </button>
+          <button name="clearData" class="btn btn-warning btn-lg margin-md ">
+            <i class="fa fa-refresh" aria-hidden="true"></i> Clear Data
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-  <!-- <div class="clearfix"></div> -->
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Template Engine By NottDev</h4>
-        </div>
-        
-        <div class="modal-body">
-          <div id="itemContainer"></div>
+    <!-- <div class="clearfix"></div> -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Template Engine By NottDev</h4>
+          </div>
+
+          <div class="modal-body">
+            <div id="itemContainer"></div>
 
             <table class="table">
               <thead>
@@ -68,72 +70,92 @@
                     <td>{{lastname}}</td>
                     <td>{{email}}</td>
                     <td>
-                       <a class="btn btn-danger btn-xs" onclick="delItem('{{firstname}}')">
-                         <i class="fa fa-trash" aria-hidden="true"></i> delete
+                      <a class="btn btn-danger btn-xs" onclick="delItem('{{firstname}}')">
+                        <i class="fa fa-trash" aria-hidden="true"></i> delete
                       </a>
-                       <a class="btn btn-info btn-xs" onclick="editItem('{{firstname}}')">
-                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
+                      <a class="btn btn-info btn-xs" onclick="editItem('{{firstname}}')">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit
                       </a>
-                     </td>
+                    </td>
                   </tr>
                 </template>
               </tbody>
             </table>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
   <script>
-
-    $(document).ready(()=>{
+    $(document).ready(() => {
 
       //Global Variable
       let MasterTemplate = $(`#MasterTemplate`).html();
+      //Get Pattern on Template
+      let regexp = /{{[a-z_]+}}/g;
+      let pattern = new Set(MasterTemplate.match(regexp));
 
       $(`button[name="clearData"]`).on('click', () => {
-         RenderTemplate('tbody-data', []);
+        RenderTemplate('tbody-data', []);
       });
 
       $(`button[name="fetchData"]`).on('click', () => {
-        let data = [
-          {firstname: 'Siriphon',lastname: 'Panayathipo', email: 'siriphon@gmail.com'},
-          {firstname: 'Manop',lastname: 'Bunmi', email: 'manop@gmail.com'},
-          {firstname: 'Somsi',lastname: 'Gaidee', email: 'somsi@gmail.com'},
+        let data = [{
+            firstname: 'Siriphon',
+            lastname: 'Panayathipo',
+            email: 'siriphon@gmail.com'
+          },
+          {
+            firstname: 'Manop',
+            lastname: 'Bunmi',
+            email: 'manop@gmail.com'
+          },
+          {
+            firstname: 'Somsi',
+            lastname: 'Gaidee',
+            email: 'somsi@gmail.com'
+          },
         ];
-         RenderTemplate('tbody-data', data);
+        
+        RenderTemplate('tbody-data', data);
       });
 
       /* RenderTemplate() method map the variable with array object, and returns the html.
         Create By NottDev :08/01/19
-        elementId data
-           |       | 
-           |       | 
-           |       | 
-           |       --------- Data array
+
+        [elementId] [data]
+           |          | 
+           |          | 
+           |          | 
+           |          --------- Data array
            | 
            ------------- Element id for render
       */
-      const RenderTemplate = (elementId = null , data = []) => {
-           let content = [];
-           let keys = data.length > 0 && Object.keys(data[0])
-           data.forEach( ( element ) => {
-             let item = MasterTemplate;
-             keys.forEach(o => {
-                let replace = `{{`+o+`}}`;
-                let re = new RegExp(replace,`gi`);
-                item = item.replace(re, element[o])
-             })
-             content.push(item)
-           });
-          document.getElementById(`${elementId}`).innerHTML = content.join(''); 
+      const RenderTemplate = (elementId = null, data = []) => {
+        
+        if(!data || data.constructor !== Array) return 
+        else if(data.constructor === Object) data = [{...data}]
+        
+        let content = [];
+        let keys = data.length > 0 && Object.keys(data[0])
+        data.forEach((element) => {
+          let item = MasterTemplate;
+          //firstname, lastname, age
+          keys.forEach(o => {
+            let replace = `{{` + o + `}}`;
+            let re = new RegExp(replace, `gi`);
+            item = item.replace(re, element[o])
+          })
+          content.push(item)
+        });
+        document.getElementById(`${elementId}`).innerHTML = content.join('');
       }
 
       //Initial
@@ -142,13 +164,13 @@
     });
 
     const delItem = (id) => {
-      alert('Are you sure to delete this:: '+id)
+      alert('Are you sure to delete this:: ' + id)
     }
 
     const editItem = (id) => {
-      alert('Are you sure to edit this: '+id)
+      alert('Are you sure to edit this: ' + id)
     }
-
   </script>
-  </body>
+</body>
+
 </html>
