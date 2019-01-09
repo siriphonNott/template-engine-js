@@ -123,8 +123,7 @@
             email: 'somsi@gmail.com'
           },
         ];
-        
-        RenderTemplate('tbody-data', data);
+        RenderTemplate(`tbody-data`, data);
       });
 
       /* RenderTemplate() method map the variable with array object, and returns the html.
@@ -138,9 +137,9 @@
            | 
            ------------- Element id for render
       */
-      const RenderTemplate = (elementId = null, data = []) => {
+      const RenderTemplate = (elementId = null, data = null) => {
         
-        if(!data || data.constructor !== Array) return 
+        if(!elementId || !data || data.constructor !== Array) return 
         else if(data.constructor === Object) data = [{...data}]
         
         let content = [];
