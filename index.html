@@ -64,7 +64,7 @@
                 </tr>
               </thead>
               <tbody id="tbody-data">
-                <template id="MasterTemplate">
+                <template id="masterTemplate">
                   <tr>
                     <td>{{firstname}}</td>
                     <td>{{lastname}}</td>
@@ -96,11 +96,14 @@
   <script>
     $(document).ready(() => {
 
-      //Global Variable
-      let MasterTemplate = $(`#MasterTemplate`).html();
+      //Get the content (innerHTML) of the selected element template.
+      //use jQuery Method
+      let contentTemplate = $(`#masterTemplate`).html();
+      //or document.getElementById('masterTemplate').innerHTML //use HTML DOM Method
+      
       //Get Pattern on Template
       let regexp = /{{[a-z_]+}}/g;
-      let pattern = new Set(MasterTemplate.match(regexp));
+      let pattern = new Set(contentTemplate.match(regexp));
 
       $(`button[name="clearData"]`).on('click', () => {
         RenderTemplate('tbody-data', []);
@@ -123,30 +126,32 @@
             email: 'somsi@gmail.com'
           },
         ];
-        RenderTemplate(`tbody-data`, data);
+        RenderTemplate(contentTemplate, `tbody-data`, data);
       });
 
       /* RenderTemplate() method map the variable with array object, and returns the html.
         Create By NottDev :08/01/19
 
-        [elementId] [data]
-           |          | 
-           |          | 
-           |          | 
-           |          --------- Data array
-           | 
-           ------------- Element id for render
+        [contentTemplate] [elementId] [data]
+                |              |        | 
+                |              |        | 
+                |              |        | 
+                |              |        --------- Array set of data.
+                |              | 
+                |              ------------- Element id for render.
+                |
+                --------------------  Content (innerHTML) of the selected element template.
       */
-      const RenderTemplate = (elementId = null, data = null) => {
+      const RenderTemplate = (contentTemplate = null, elementId = null, data = null) => {
         
-        if(!elementId || !data || data.constructor !== Array) return 
+        //Check parameters
+        if(!contentTemplate || !elementId || !data || data.constructor !== Array) return 
         else if(data.constructor === Object) data = [{...data}]
         
         let content = [];
         let keys = data.length > 0 && Object.keys(data[0])
         data.forEach((element) => {
-          let item = MasterTemplate;
-          //firstname, lastname, age
+          let item = contentTemplate;
           keys.forEach(o => {
             let replace = `{{` + o + `}}`;
             let re = new RegExp(replace, `gi`);
@@ -158,7 +163,7 @@
       }
 
       //Initial
-      RenderTemplate(`tbody-data`);
+      RenderTemplate(contentTemplate, `tbody-data`);
 
     });
 
