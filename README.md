@@ -1,7 +1,8 @@
 # Template Engine Demo
 use when you have HTML code you want to use over and over again, render value in template tag
 
-## mockup data
+## mockup data 
+data must be array
 ```
  let data = [
     {firstname: 'Siriphon',lastname: 'Panayathipo', email: 'siriphon@gmail.com'},
